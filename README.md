@@ -34,7 +34,7 @@ ___
 ### Setup 
 1.  Clone the repo:
 ```bash
-git clone https://github.com/eliahuhorwitz/3D-ADS.git
+git https://github.com/caoyunkang/CPMF
 cd CPMF
 ```
 2. Create a new environment and install the libraries:
@@ -120,10 +120,10 @@ python run_exp.py
 
 #### Rendered Samples
 Our method employs open-3d for rendering. Some results are as follows.
-![](imgs/samples.png)
+![](assets/samples.png)
 
 #### Qualitative Results
-![](imgs/qualitative_results.png)
+![](assets/qualitative_results.png)
 
 ## Citation
 If you find this repository useful for your research, please use the following.
