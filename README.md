@@ -26,8 +26,17 @@ ___
 > The 3D and 2D modality features are aggregated to obtain the CPMF for PCD anomaly detection. 
 > Extensive experiments demonstrate the complementary capacity between 2D and 3D modality features and the 
 > effectiveness of CPMF, with 95.15% image-level AU-ROC and 92.93% pixel-level PRO on the MVTec3D benchmark.
+#### Framework
+![Framework](assets/framework.png)
 
-![](assets/framework.png)
+#### Rendered Samples
+Our method uses open-3d for rendering, and here are some sample results.
+![Rendered Samples](assets/samples.png)
+
+#### Qualitative Results
+Here are the qualitative results of our method.
+![Qualitative Results](assets/qualitative_results.png)
+
 
 ## Getting Started
 
@@ -118,17 +127,12 @@ python run_exp.py
 <br>
 <br>
 
-#### Rendered Samples
-Our method employs open-3d for rendering. Some results are as follows.
-![](assets/samples.png)
 
-#### Qualitative Results
-![](assets/qualitative_results.png)
 
 ## Citation
 If you find this repository useful for your research, please use the following.
 
-```
+```bibtex
 @article{cao2023CPMF,
 	title = {Complementary Pseudo Multimodal Feature for Point Cloud Anomaly Detection},
 	journal = {arXiv preprint arXiv:2303.13194},
@@ -140,3 +144,11 @@ If you find this repository useful for your research, please use the following.
 
 ## Acknowledgments
 Some codes are borrowed from [BTF](https://github.com/eliahuhorwitz/3D-ADS). Thanks for their work.
+```bibtex
+@article{horwitz2022empirical,
+  title={An Empirical Investigation of 3D Anomaly Detection and Segmentation},
+  author={Horwitz, Eliahu and Hoshen, Yedid},
+  journal={arXiv preprint arXiv:2203.05550},
+  year={2022}
+}
+```
