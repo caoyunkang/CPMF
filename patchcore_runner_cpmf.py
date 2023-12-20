@@ -3,7 +3,7 @@ from utils.csv_utils import write_results
 from data.mvtec3d_cpmf import get_data_loader
 import torch
 from tqdm import tqdm
-from feature_extractors.cpmf_features import MultiViewRGBFPFHFeatures
+from feature_extractors.cpmf_features import CPMF_Features
 import pandas as pd
 from data.mvtec3d_cpmf import mvtec3d_classes
 
@@ -11,7 +11,7 @@ class MultiViewPatchCore():
     def __init__(self, backbone_name, dataset_path, n_views, no_fpfh, class_name, root_dir, exp_name, plot_use_rgb, image_size=224):
         self.image_size = image_size
         self.dataset_path = dataset_path
-        self.method = MultiViewRGBFPFHFeatures(n_views=n_views, no_fpfh=no_fpfh, backbone_name=backbone_name)
+        self.method = CPMF_Features(n_views=n_views, no_fpfh=no_fpfh, backbone_name=backbone_name)
         self.class_name = class_name
         self.image_dir = os.path.join(root_dir, "images", exp_name)
         self.csv_dir = os.path.join(root_dir, "csv")
