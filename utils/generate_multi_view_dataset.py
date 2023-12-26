@@ -97,14 +97,14 @@ def preprocess_pc(multi_view_vis:render_utils.MultiViewRender, tiff_path, root_p
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Preprocess MVTec 3D-AD')
     parser.add_argument('--dataset_path', type=str,
-                        default='../../datasets/mvtec_3d_anomaly_detection',
+                        default='../../datasets/mvtec_3d',
                         help='The root path of the MVTec 3D-AD. The preprocessing is done inplace (i.e. the preprocessed dataset overrides the existing one)')
     parser.add_argument('--color-option', type=str,
                         default='UNIFORM', choices=['X', 'Y', 'Z', 'NORM', 'FPFH','UNIFORM','RGB'],
                         help='in [X,Y,Z,NORM,FPFH]')
     parser.add_argument('--category', type=str, default='bagel')
     parser.add_argument('--save-dir', type=str,
-                        default='../../datasets/multi_view_rgb_mvtec_3d_anomaly_detection',
+                        default='../../datasets/mvtec_3d_multi_view',
                         help='The save path for the generated multi-view-mvtec3d dataset')
 
     # NOTE: You should run the preprocessing.py first

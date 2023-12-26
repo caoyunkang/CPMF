@@ -20,7 +20,7 @@ def run_3d_ads(args):
     patchcore.fit()
 
     ############# evaluate ###########
-    patchcore.evaluate()
+    patchcore.evaluate(draw=args.draw)
 
 def str2bool(v):
     return v.lower() in ("yes", "true", "t", "1")
@@ -36,11 +36,8 @@ if __name__ == '__main__':
     parser.add_argument('--category', type=str, default='bagel')
     parser.add_argument('--root-dir', type=str, default='./results')
     parser.add_argument('--backbone', type=str, default='resnet18')
-
+    parser.add_argument('--draw', type=str2bool, default=False)
 
     args = parser.parse_args()
-    # import os
-    #
-    # os.environ['CUDA_LAUNCH_BLOCKING'] = "1"
 
     run_3d_ads(args)

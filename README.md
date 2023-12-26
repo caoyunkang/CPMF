@@ -50,28 +50,19 @@ cd CPMF
 ```bash
 conda create -n 3d_cpmf python=3.7
 conda activate 3d_cpmf
-pip install -r requirements.txt
+sh init.sh
 ```
 3. Download and extract the dataset
 ```bash
+data_dir=../datasets/mvtec_3d
 cd $data_dir # data dir for the dataset
 wget https://www.mydrive.ch/shares/45920/dd1eb345346df066c63b5c95676b961b/download/428824485-1643285832/mvtec_3d_anomaly_detection.tar.xz
-tar -xvf mvtec_3d_anomaly_detection.tar.xz
+mkdir mvtec_3d
+tar -xvf mvtec_3d_anomaly_detection.tar.xz -c ./mvtec_3d
 ```
-4. preprocess datasets
+4. preprocess datasets. i.e., remove backgrounds and then render multi-view images.
 ```bash
-cd ..
-python utils/preprocessing.py --dataset_path $data_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category bagel --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category cable_gland --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category carrot --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category cookie --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category dowel --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category foam --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category peach --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category potato --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category rope --save-dir $save_dir
-python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-option UNIFORM --category tire --save-dir $save_dir
+sh preprocess_dataset.sh
 ```
 <br>
 <br>
@@ -80,7 +71,7 @@ python utils/generate_multi_view_dataset.py --dataset_path $data_dir --color-opt
 ### Training
 To run on a single category:
 ```bash
-python main.py -category  bagel --n-views 27 --no-fpfh False --data-path $data_dir --exp-name $exp_namer --backbone resnet18
+python main.py --category  bagel --n-views 27 --no-fpfh False --data-path $data_dir --exp-name $exp_name --backbone resnet18
 ```
 To reproduce the experiments. Note: please make sure the directories are properly set.
 ```bash

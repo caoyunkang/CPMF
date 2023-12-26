@@ -30,14 +30,15 @@ class MultiViewPatchCore():
 
         self.method.run_coreset()
 
-    def evaluate(self):
+    def evaluate(self, draw=False):
         class_name = self.class_name
         test_loader = get_data_loader("test", class_name=class_name, img_size=self.image_size, dataset_path=self.dataset_path)
         with torch.no_grad():
             for sample, mask, label in tqdm(test_loader, desc=f'Extracting test features for class {class_name}'):
                 self.method.predict(sample, mask, label)
 
-        self.method.draw_anomaly_map(self.image_dir, self.class_name, self.plot_use_rgb)
+        if draw:
+            self.method.draw_anomaly_map(self.image_dir, self.class_name, self.plot_use_rgb)
 
         self.method.calculate_metrics()
         image_rocauc = round(self.method.image_rocauc, 4)
