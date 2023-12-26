@@ -7,7 +7,7 @@ if __name__ == "__main__":
     classes = mvtec3d_classes()
 
     color_options = 'UNIFORM'
-    data_path = '../datasets/mvtec_multi_view/mvtec-2.5d'
+    data_path = '../datasets/mvtec3d_multi_view'
 
     n_processes = len(data_path)
     pool = Pool(processes=1)
