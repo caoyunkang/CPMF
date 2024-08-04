@@ -200,7 +200,7 @@ class ModelINet(torch.nn.Module):
         self.avg_pool = torch.nn.AdaptiveAvgPool2d((1, 1)) if pool_last else None
 
     def forward(self, x):
-        x = x.to(self.device)
+        # x = x.to(self.device)
 
         # Backbone forward pass.
         features = self.backbone(x)

@@ -13,8 +13,20 @@ class CPMF_Features(Features):
 
         assert (self.n_views > 0 or not self.no_fpfh)
 
-    def calculate_single_view_feature(self, image, position):
-        feature_map = self(image)
+    # def calculate_single_view_feature(self, image, position):
+    #     feature_map = self(image)
+    #     position = position.long()
+    #
+    #     pcd_features = []
+    #     for f in feature_map:
+    #         f_resize = F.interpolate(f, self.image_size, mode='bilinear')
+    #         pcd_features.append(f_resize[:, :, position[0, 1, :], position[0, 0, :]])
+    #
+    #     pcd_features = torch.cat(pcd_features, 1)
+    #
+    #     return pcd_features
+
+    def calculate_single_view_feature(self, feature_map, position):
         position = position.long()
 
         pcd_features = []
@@ -31,8 +43,12 @@ class CPMF_Features(Features):
 
         n_views = min(len(sample[3]), self.n_views)
 
-        for view_image, position in zip(sample[3][:n_views], sample[4][:n_views]):
-            pcd_feature_list.append(self.calculate_single_view_feature(view_image, position))
+        feature_map = self(torch.cat(sample[3][:n_views], dim=0))
+        for indx, position in enumerate(sample[4][:n_views]):
+            pcd_feature_list.append(self.calculate_single_view_feature([f[indx:indx+1, :, :, :] for f in feature_map], position))
+
+        # for view_image, position in zip(sample[3][:n_views], sample[4][:n_views]):
+        #     pcd_feature_list.append(self.calculate_single_view_feature(view_image, position))
 
         pcd_features = torch.cat(pcd_feature_list, 0)
         view_invariant_feature = torch.mean(pcd_features, 0)
