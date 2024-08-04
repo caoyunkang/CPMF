@@ -119,6 +119,15 @@ python run_exp.py
 <br>
 
 
+## Additional Results
+We sincerely thank [zhiqing0205](https://github.com/caoyunkang/CPMF/issues/6#issue-2447098424) for providing the evaluation
+results of CPMF with solely depth maps on Eyecandies.
+
+|       |   CandyCane |   ChocolateCookie |   ChocolatePraline |   Confetto |   GummyBear |   HazelnutTruffle |   LicoriceSandwich |   Lollipop |   Marshmallow |   PeppermintCandy |   average |
+|:------|------------:|------------------:|-------------------:|-----------:|------------:|------------------:|-------------------:|-----------:|--------------:|------------------:|----------:|
+| I-AUROC |       77.28 |             79.52 |              75.04 |      84.64 |       74.04 |             58.40 |              74.56 |      81.99 |         71.04 |             81.28 |     75.78 |
+| P-AUROC |       98.72 |             93.09 |              89.93 |      95.04 |       90.09 |             86.86 |              92.81 |      98.39 |         90.51 |             92.65 |     92.81 |
+| AUPRO |       94.07 |             75.61 |              58.44 |      79.53 |       72.84 |             56.14 |              67.91 |      90.83 |         69.60 |             78.38 |     74.34 |
 
 ## Citation
 If you find this repository useful for your research, please use the following.
