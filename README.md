@@ -61,8 +61,14 @@ mkdir mvtec_3d
 tar -xvf mvtec_3d_anomaly_detection.tar.xz -c ./mvtec_3d
 ```
 4. preprocess datasets. i.e., remove backgrounds and then render multi-view images.
+
+**MVTec 3D-AD**
 ```bash
 sh preprocess_dataset.sh
+```
+**Eyecandies**
+```bash
+sh preprocess_dataset_eyecandies.sh
 ```
 <br>
 <br>
